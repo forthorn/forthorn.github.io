@@ -320,23 +320,12 @@
 
       
         
-          
-            <h2 id="VPS租用"><a href="#VPS租用" class="headerlink" title="VPS租用"></a>VPS租用</h2><p>本人租用的是banwagonhost的VPS，年费19.99美元，256M内存，性能已经足以我搭梯子，放简单个人主页了。<br>具体购买操作见 banwagonhost官方网站，选择服务方案再注册购买即可。支付方式支持PayPal和支付宝。PayPal没有优惠活动的话且还没注册过的话，推荐国内用户使用支付宝支付。<br>支付成功后，进入我的服务。进入控制面板即可进行VPS的后台操作。首先，可以自己先看看操作面板都有什么东西。好了，看好之后，Stop服务器，因为我们要安装系统了。选择一个操作系统进行安装，我使用的CentOS，基本上这些Linux系统都差不多。不嫌麻烦不怕折腾的话，可以自己多试试。<br>由于没有界面，所有的操作都基于命令行。在此之前，需要熟悉一下基本的Linux命令以及Vi编辑器命令。</p>
-<h2 id="搭建ShadowSocks"><a href="#搭建ShadowSocks" class="headerlink" title="搭建ShadowSocks"></a>搭建ShadowSocks</h2><p>进入后台管理面板有个ShadowSocks Server的选项，点击Install ShadowSocks Server即可安装ShadowSocks服务了，这是VPS自带的一键安装程序，安装好了会提供给一个vpn账号和密码，但是不能自行更改，而且不适用于多个账户。所以，建议使用其他的方式安装。通过github搜索可以搜索多许多ShadowSocks的一键安装包，根据说明文档安装即可。<br>我使用的是ShadowSocks-go。在windows端使用Putty输入root用户名和密码后，输入如下命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-go</div><div class="line">.shchmod +x shadowsocks-go</div></pre></td></tr></table></figure></p>
-<p>以及<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.sh./shadowsocks-go.sh 2&gt;&amp;1 | tee shadowsocks-go.log</div></pre></td></tr></table></figure></p>
-<p>安装完成后，会有如下提示信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Congratulations, shadowsocks-go install completed!</div><div class="line">Your Server IP: your_server_ip</div><div class="line">Your Server Port: your_server_port</div><div class="line">Your Password: your_password</div><div class="line">Your Local Port: 1080</div><div class="line">Your Encryption Method: aes-256-cfb</div><div class="line">Welcome to visit: https://teddysun.com/392.html Enjoy it!</div></pre></td></tr></table></figure></p>
-<p>上述信息中，Server IP就是服务器IP地址，Server port就是服务器端口，Password就是密码，输入到ShadowSocks客户端中即可使用。由于想要将账号分享给他人使用，所以还需要进入用户配置文件进行多用户配置。输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/shadowsocks/config.json</div></pre></td></tr></table></figure></p>
-<p>可以看到已存在的用户列表，按 i 进入编辑：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;port_password&quot;:&#123;</div><div class="line">         &quot;8989&quot;:&quot;freedom&quot;,</div><div class="line">         &quot;1024&quot;:&quot;freedom&quot;,</div><div class="line">         &quot;10086&quot;:&quot;freedom&quot;,</div><div class="line">    &#125;,</div><div class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;,</div><div class="line">    &quot;timeout&quot;:600</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>修改用户列表，上述json数据中，一个端口号对应一个用户密码。修改为按ESC退出编辑状态，输入:wq 进行保存退出。然后，就可以使用新的账户名和密码进行登录了。想要查看Shadowsocks的状态或者进行其他操作，可以分别输入如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/shadowsocks start #启动</div><div class="line">/etc/init.d/shadowsocks stop #停止</div><div class="line">/etc/init.d/shadowsocks restart #重启</div><div class="line">/etc/init.d/shadowsocks status #查看状态</div></pre></td></tr></table></figure>
-<h2 id="搭建VPN"><a href="#搭建VPN" class="headerlink" title="搭建VPN"></a>搭建VPN</h2><p>在Pc端使用ShadowSocks是非常方便的，使用PAC模式，甚至都不用进行浏览器配置就可以自动根据pac文件中的网站规则进行自动科学上网。但在iOS手机端，未越狱的手机想使用ShadowSocks需额外购买付费软件，而且价格不菲。所以，推荐使用VPN在手机端使用。安装VPN服务，同样推荐使用一键安装脚本，省去折腾。我使用的是CentOS6.4，使用CentOS 6的安装教程。首先，检测是否开通了ppp和tun。分别输入如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cat /dev/net/tun</div><div class="line">cat /dev/ppp</div></pre></td></tr></table></figure></p>
-<p>分别返回：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cat: /dev/net/tun: File descriptor in bad state</div><div class="line">cat: /dev/ppp: No such device or address</div></pre></td></tr></table></figure></p>
-<p>如果是上述返回状态，则可以进行安装操作了，否则得联系VPS的服务商进行开通了。<br>输入下面的代码，下载安装包。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget http://www.hi-vps.com/shell/vpn_centos6.sh</div><div class="line">chmod a+x vpn_centos6.sh</div></pre></td></tr></table></figure></p>
-<p>下载完成后，输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bash vpn_centos6.sh</div></pre></td></tr></table></figure></p>
-<p>这个时候会有三个选项提示，先选择1进行服务的安装。等待片刻后，服务就安装好了，还自动生成了一个用户和随机密码。这里我暂时不管它。因为我还需要多用户添加。输入如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/ppp/chap-secrets</div></pre></td></tr></table></figure></p>
-<p>同样，按 i 进行编辑，添加多个用户和密码，按ESC退出编辑，:wq进行保存退出。好了，这个时候，多用户的VPN也就设置好了。实际上，我开始并没有使用一键安装脚本，而是手动进行配置，遇到过许多麻烦。虽然解决了一些，但仍然存在问题。不得已，重装系统，使用一键安装，适合我这种不太熟悉也不想再浪费太多时间折腾的用户。类似的脚本在Github都可以找到许多。有其他需求的用户还可以再安装L2TP IPSec VPN服务。</p>
-
-          
+          <h2 id="VPS租用"><a href="#VPS租用" class="headerlink" title="VPS租用"></a>VPS租用</h2><p>本人租用的是banwagonhost的VPS，年费19.99美元，256M内存，性能已经足以我搭梯子，放简单个人主页了。<br>具体购买操作见 banwagonhost官方网站，选择服务方案再注册购买即可。支付方式支持PayPal和支付宝。PayPal没有优惠活动的话且还没注册过的话，推荐国内用户使用支付宝支付。<br>支付成功后，进入我的服务。进入控制面板即可进行VPS的后台操作。首先，可以自己先看看操作面板都有什么东西。好了，看好之后，Stop服务器，因为我们要安装系统了。选择一个操作系统进行安装，我使用的CentOS，基本上这些Linux系统都差不多。不嫌麻烦不怕折腾的话，可以自己多试试。<br>由于没有界面，所有的操作都基于命令行。在此之前，需要熟悉一下基本的Linux命令以及Vi编辑器命令。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/29/VPS租用及搭建SS服务、VPN服务简记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -447,9 +436,6 @@
       
         
           <h2 id="浏览器主页劫持修复"><a href="#浏览器主页劫持修复" class="headerlink" title="浏览器主页劫持修复"></a>浏览器主页劫持修复</h2><p>前几日，不知下载使用了哪个什么软件，意外遇到了某数字安全软件厂商的流氓导航绑架。以前也曾经遇到过，但是基本都是更换浏览器快捷方式或者修改快捷方式启动参数就能解决问题，这次折腾了好久，还是没有解决。遇到打开浏览器就导航到某个网站，我遇到的情况基本就两种，主页篡改和启动参数修改。</p>
-<ul>
-<li><p>主页篡改修复</p>
-<p>遇到这样的情况，基本不用太担心，修改浏览器主页，查杀木马就行。很简单的使用各大安全软件厂商的卫士/管家基本都有修改锁定主页的功能，不需要再费心思修改用户策略表什么的。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/26/浏览器主页劫持修复与Console简单个性设置/#more" rel="contents">
               阅读全文 &raquo;
