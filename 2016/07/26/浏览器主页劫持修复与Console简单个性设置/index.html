@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next pisces use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="浏览器主页劫持,cmd, console," />
+  <meta name="keywords" content="浏览器主页劫持,cmd,console," />
 
 
 
@@ -96,7 +96,7 @@
 
 主页篡改修复
 遇到这样的情况，基本不用太担心，修改浏览器主页，查杀木马就行。很简单的使用各大安全软件厂">
-<meta property="og:updated_time" content="2016-07-29T13:15:07.996Z">
+<meta property="og:updated_time" content="2016-07-29T14:54:01.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器主页劫持修复与Console简单个性设置">
 <meta name="twitter:description" content="浏览器主页劫持修复前几日，不知下载使用了哪个什么软件，意外遇到了某数字安全软件厂商的流氓导航绑架。以前也曾经遇到过，但是基本都是更换浏览器快捷方式或者修改快捷方式启动参数就能解决问题，这次折腾了好久，还是没有解决。遇到打开浏览器就导航到某个网站，我遇到的情况基本就两种，主页篡改和启动参数修改。
@@ -109,7 +109,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -184,6 +184,26 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -263,6 +283,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/blog/" itemprop="url" rel="index">
+                    <span itemprop="name">blog</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -289,6 +328,7 @@
 <ul>
 <li><p>主页篡改修复</p>
 <p>遇到这样的情况，基本不用太担心，修改浏览器主页，查杀木马就行。很简单的使用各大安全软件厂商的卫士/管家基本都有修改锁定主页的功能，不需要再费心思修改用户策略表什么的。</p>
+<a id="more"></a>
 </li>
 <li><p>启动参数修复</p>
 <p>遇到这样的情况，找到浏览器的快捷方式，右键， 查看属性，一般都可以看到目标栏目下除了执行文件地址还加了一长串的网址，这个网址就是被劫持前往的网址。修改更换快捷方式即可。但是我的chrome浏览器快捷方式后面没有参数，但是在浏览器中使用<code>chrome://version</code>命令后可以看到命令行栏目中加了一长串网址。通过各种办法无法解决，甚至使用了PCHunter查看浏览器进程是否未知名的模块链接注入。查看无果，无奈之下，选择自己定义启动参数来解决劫持问题。在浏览器快捷方式属性-目标栏目中，在”chrome.exe”参数后添加空格和”–”解决，也可以在浏览器快捷方式中添加”–”和常用主页地址。每次启动打开就不会链接到流氓地址了。但是，还存在一个问题就是在已打开的浏览器中任务栏图标右键打开新的窗口时仍然会导航到流氓导航。</p>
@@ -329,7 +369,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/浏览器主页劫持-cmd-console/" rel="tag">#浏览器主页劫持,cmd, console</a>
+            <a href="/tags/浏览器主页劫持/" rel="tag">#浏览器主页劫持</a>
+          
+            <a href="/tags/cmd/" rel="tag">#cmd</a>
+          
+            <a href="/tags/console/" rel="tag">#console</a>
           
         </div>
       
@@ -422,11 +466,18 @@
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -437,6 +488,26 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/forthorn" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/770311869" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
           
         </div>
 
@@ -455,7 +526,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器主页劫持修复"><span class="nav-number">1.</span> <span class="nav-text">浏览器主页劫持修复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMD命令行在任意位置目录打开"><span class="nav-number">2.</span> <span class="nav-text">CMD命令行在任意位置目录打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改CMD的字体"><span class="nav-number">3.</span> <span class="nav-text">修改CMD的字体</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器主页劫持修复"><span class="nav-text">浏览器主页劫持修复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMD命令行在任意位置目录打开"><span class="nav-text">CMD命令行在任意位置目录打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改CMD的字体"><span class="nav-text">修改CMD的字体</span></a></li></ol></div>
             
           </div>
         </section>
@@ -488,7 +559,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -553,6 +624,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
